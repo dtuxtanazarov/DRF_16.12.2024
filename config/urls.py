@@ -7,6 +7,8 @@ urlpatterns = [
     path('account/',include('django.contrib.auth.urls')),
     path('',include('News.urls')),
     path('registration/',include('registration.urls')),
+    path('ser/',include('api.urls')),
+    path('ser/auth',include('rest_framework.urls')),
 
 
 ]

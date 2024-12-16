@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 
+import rest_framework.permissions
 from django.conf.global_settings import MEDIA_URL, MEDIA_ROOT, STATIC_ROOT, STATICFILES_DIRS, LOGIN_REDIRECT_URL
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -14,9 +15,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-c-8dm5o0q2s#$1h_t4wy4tl6pvk#^f*898-yl(1&mmmfi@=a6&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -30,8 +31,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'News',
     'registration',
+    'api',
+    'rest_framework',
 ]
-
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES":[
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
